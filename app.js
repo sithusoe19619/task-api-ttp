@@ -1,4 +1,6 @@
 const express = require("express")
+const { db } = require("./models")
+
 const app = express()
 const PORT = 3000
 
@@ -17,8 +19,8 @@ app.use((error, req, res, next) => {
     res.sendStatus(500)
 })
 
-app.listen(PORT, () => {
-    console.log(
-        `Server running on http://localhost:${PORT}`
-    )
+db.sync().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server running on http://localhost:${PORT}`)
+    })
 })

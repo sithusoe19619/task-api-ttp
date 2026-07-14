@@ -4,13 +4,18 @@ const db = require("../db")
 const Task = db.define("Task", {
     title: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {notEmpty: true}
     },
 
     priority: {
         type: DataTypes.INTEGER,
-        allowNull = false,
         defaultValue: 1
+    },
+
+    status: {
+        type: DataTypes.STRING,
+        defaultValue: "todo"
     }
 })
 

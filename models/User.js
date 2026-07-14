@@ -20,3 +20,5 @@ const User = db.define("User" , {
         validate: {len: [8, 100]}
     }
 })
+
+module.exports = User
