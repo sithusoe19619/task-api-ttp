@@ -21,8 +21,8 @@ await Task.create({ title: "Review pull requests", priority: 2, status: "doing",
 await Task.create({ title: "Water the plants", priority: 1, status: "done", UserId: alex.id });
 
 
-await Task.create({title: "Buy groceries", priority: 2, status: "todo", UserId: sam.id});
-await Task.create({title: "Finish homework", priority: 3, status: "doing", UserId: sam.id});
+await Task.create({title: "Buy groceries", priority: 2, status: "todo", UserId: jones.id});
+await Task.create({title: "Finish homework", priority: 3, status: "doing", UserId: jones.id});
 
     console.log("Seeded!");
     await db.close();
