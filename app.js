@@ -4,6 +4,7 @@ const { db } = require("./models")
 const app = express()
 const PORT = 3000
 const taskRouter = require("./routes/tasks")
+const userRouter = require("./routes/users")
 
 app.use(express.json())
 
@@ -16,6 +17,7 @@ app.get("/health" , (req, res, next) => {
 })
 
 app.use("/api/tasks", taskRouter)
+app.use("/api/users", userRouter)
 
 app.use((error, req, res, next) => {
     console.error(error)
