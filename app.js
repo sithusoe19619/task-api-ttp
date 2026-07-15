@@ -6,7 +6,13 @@ const PORT = 3000
 const taskRouter = require("./routes/tasks")
 const userRouter = require("./routes/users")
 
+function logger(req, res, next) {
+    console.log(`${req.method} ${req.url}`)
+    next()
+}
+
 app.use(express.json())
+app.use(logger)
 
 app.get("/", (req, res) => {
         res.redirect("/api/tasks")
@@ -19,9 +25,13 @@ app.get("/health" , (req, res, next) => {
 app.use("/api/tasks", taskRouter)
 app.use("/api/users", userRouter)
 
+app.use((req, res) => {
+    res.status(404).json({error: "Not found!"})
+})
+
 app.use((error, req, res, next) => {
     console.error(error)
-    res.sendStatus(500)
+    res.status(500).json({error: "Something went wrong"})
 })
 
 db.sync().then(() => {
